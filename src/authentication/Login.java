@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,9 +21,19 @@ public class Login extends javax.swing.JFrame {
 
     /**
      * Creates new form Login
+     * @throws java.sql.SQLException
      */
-    public Login() {
+    public Login() throws SQLException {
         initComponents();
+        if(!UsersDB.getConnection().isClosed())
+        {
+            db_status.setText("Connected");   
+        }
+        else
+        {
+            db_status.setText("Not Connected");
+        }
+        
     }
 
     /**
@@ -39,9 +51,9 @@ public class Login extends javax.swing.JFrame {
         pwd = new javax.swing.JTextField();
         state = new javax.swing.JLabel();
         login = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        db_status_text = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        db_status = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -71,10 +83,10 @@ public class Login extends javax.swing.JFrame {
         });
         getContentPane().add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 100, 40));
 
-        jLabel4.setText("Database Status : ");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
+        db_status_text.setText("Database Status : ");
+        getContentPane().add(db_status_text, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 110, 50));
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, -1, -1));
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 200, 30));
+        getContentPane().add(db_status, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 200, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -85,6 +97,9 @@ public class Login extends javax.swing.JFrame {
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         // TODO add your handling code here:
+        
+        
+        
         List<Users> list = UsersDB.getUsers();
         
         //List<String> listUsers = new ArrayList<String>();
@@ -104,7 +119,7 @@ public class Login extends javax.swing.JFrame {
                 if(v_pwd.equals(pwd.getText()))
                 {
                     state.setText("Success");
-                    UsersDB.getConnection();
+                    //UsersDB.getConnection();
                     
                     //déclaration de l'objet de type Home => éli hiya él main fenétre
                     //ta3rif al wajiha al rousoumiya fi da5il htha al zér
@@ -159,17 +174,21 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                try {
+                    new Login().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel db_status;
+    private javax.swing.JLabel db_status_text;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JButton login;
     private javax.swing.JTextField pwd;
     private javax.swing.JLabel state;

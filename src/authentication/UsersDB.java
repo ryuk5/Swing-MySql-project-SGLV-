@@ -19,7 +19,8 @@ public class UsersDB {
             Class.forName("com.mysql.jdbc.Driver");
             String url = "jdbc:mysql://localhost/sglv-db";
             con = DriverManager.getConnection(url,"root","");
-            System.out.println("Connected");
+            //System.out.println("Connected");
+            
         }catch(ClassNotFoundException | SQLException e)
         {
             e.printStackTrace();
