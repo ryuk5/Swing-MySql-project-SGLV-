@@ -5,6 +5,9 @@
  */
 package authentication;
 
+import java.awt.Color;
+import java.awt.Frame;
+import java.awt.GraphicsEnvironment;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 
 /**
  *
@@ -23,6 +27,9 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      * @throws java.sql.SQLException
      */
+    static boolean maximized = true;
+    int xMouse;
+    int yMouse;
     public Login() throws SQLException {
         initComponents();
         if(!UsersDB.getConnection().isClosed())
@@ -35,7 +42,12 @@ public class Login extends javax.swing.JFrame {
         }
         
     }
-
+    
+    public String getUsername()
+    {
+        return this.username.getText();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -125,6 +137,7 @@ public class Login extends javax.swing.JFrame {
                     //ta3rif al wajiha al rousoumiya fi da5il htha al zér
                     //al home houa wajiha rousoumiya
                     Home home = new Home();
+                    home.setHomeUsername(this.username.getText());
                     home.setVisible(true);
                     this.setVisible(false);
                 }
