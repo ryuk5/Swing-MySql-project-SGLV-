@@ -9,12 +9,12 @@ package cars;
  *
  * @author Med Amine Ben Ammar
  */
-public class CarsCrudSystem extends javax.swing.JFrame {
+public class CarsCrudSystemUI extends javax.swing.JFrame {
 
     /**
      * Creates new form CarsCrudSystem
      */
-    public CarsCrudSystem() {
+    public CarsCrudSystemUI() {
         initComponents();
     }
 
@@ -70,20 +70,21 @@ public class CarsCrudSystem extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CarsCrudSystem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CarsCrudSystemUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CarsCrudSystem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CarsCrudSystemUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CarsCrudSystem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CarsCrudSystemUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CarsCrudSystem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CarsCrudSystemUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CarsCrudSystem().setVisible(true);
+                new CarsCrudSystemUI().setVisible(true);
             }
         });
     }
