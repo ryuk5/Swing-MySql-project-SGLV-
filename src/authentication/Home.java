@@ -413,7 +413,7 @@ public class Home extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         RentCrudSystemUI rUI = new RentCrudSystemUI();
-        //rUI.setAdminInfo(home_username.getText());
+        rUI.setAdminInfo(home_username.getText());
         rUI.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
