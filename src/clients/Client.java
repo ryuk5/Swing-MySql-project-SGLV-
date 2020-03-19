@@ -9,7 +9,7 @@ package clients;
  *
  * @author Med Amine Ben Ammar
  */
-public class Clients {
+public class Client {
     
     private int ncin;
     private String fname;
@@ -17,12 +17,12 @@ public class Clients {
     private int tel;
     private String adr;
 
-    public Clients() {
+    public Client() {
         super();
     }
 
     
-    public Clients(int ncin, String fname, String lname, int tel, String adr) {
+    public Client(int ncin, String fname, String lname, int tel, String adr) {
         this.ncin = ncin;
         this.fname = fname;
         this.lname = lname;

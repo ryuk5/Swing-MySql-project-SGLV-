@@ -20,7 +20,7 @@ import java.util.List;
  *
  * @author Med Amine Ben Ammar
  */
-public class ClientsCrudSystem {
+public class ClientCrudSystem {
     
     public static Connection getConnection()
     {
@@ -39,13 +39,13 @@ public class ClientsCrudSystem {
         return con;
     }
     
-    public static int save(Clients clt)
+    public static int save(Client clt)
     {
         int st = 0;
         try
         {
             String req = "INSERT INTO clients(ncin, fname, lname, tel , adr)VALUES(?,?,?,?,?)";
-            Connection con = ClientsCrudSystem.getConnection();
+            Connection con = ClientCrudSystem.getConnection();
             PreparedStatement preparedStatement = (PreparedStatement)con.prepareCall(req);
             preparedStatement.setInt(1, clt.getNcin());
             preparedStatement.setString(2, clt.getFname());
@@ -65,18 +65,20 @@ public class ClientsCrudSystem {
     }
 
 
-    public static int update(Clients clt) 
+    public static int update(Client clt) 
     {
         int st = 0;
         try
         {
             String req = "UPDATE clients SET fname=?,lname=?,tel=?,adr=? WHERE ncin=?";
-            Connection con = ClientsCrudSystem.getConnection();
+            Connection con = ClientCrudSystem.getConnection();
             PreparedStatement preparedStatement = (PreparedStatement)con.prepareCall(req);
             preparedStatement.setString(1, clt.getFname());
             preparedStatement.setString(2, clt.getLname());
             preparedStatement.setInt(3, clt.getTel());
             preparedStatement.setString(4, clt.getAdr());
+            
+            preparedStatement.setInt(5, clt.getNcin());
             
             st = preparedStatement.executeUpdate();
             con.close();
@@ -96,7 +98,7 @@ public class ClientsCrudSystem {
         try
         {
             String req = "DELETE FROM clients WHERE ncin=?";
-            Connection con = ClientsCrudSystem.getConnection();
+            Connection con = ClientCrudSystem.getConnection();
             PreparedStatement preparedStatement = (PreparedStatement)con.prepareCall(req);
             
             preparedStatement.setInt(1, ncin);
@@ -113,13 +115,13 @@ public class ClientsCrudSystem {
     }
     
     
-    public static Clients getClient(int ncin)
+    public static Client getClient(int ncin)
     {
-        Clients client = new Clients();
+        Client client = new Client();
         try
         {
             String req = "SELECT * FROM clients WHERE ncin=?";
-            Connection con = ClientsCrudSystem.getConnection();
+            Connection con = ClientCrudSystem.getConnection();
             PreparedStatement preparedStatement = (PreparedStatement)con.prepareCall(req);
             
             preparedStatement.setInt(1, ncin);
@@ -144,20 +146,20 @@ public class ClientsCrudSystem {
     }
     
     
-    public static List<Clients> getAllClients()
+    public static List<Client> getAllClients()
     {
-        List<Clients> list = new ArrayList<Clients>();
+        List<Client> list = new ArrayList<Client>();
         try
         {
             String req = "SELECT * FROM clients";
-            Connection con = ClientsCrudSystem.getConnection();
+            Connection con = ClientCrudSystem.getConnection();
             PreparedStatement preparedStatement = (PreparedStatement)con.prepareCall(req);
             
             ResultSet resultSet = preparedStatement.executeQuery();
             
             while(resultSet.next())
             {
-                list.add(new Clients(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),resultSet.getInt(4),resultSet.getString(5)));
+                list.add(new Client(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),resultSet.getInt(4),resultSet.getString(5)));
                 
             }
             con.close();
@@ -169,11 +171,6 @@ public class ClientsCrudSystem {
         
         return list;
     }
-
-
-
-
-
 
 
 }

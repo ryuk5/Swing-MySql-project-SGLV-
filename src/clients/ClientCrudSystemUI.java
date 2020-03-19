@@ -7,20 +7,21 @@ package clients;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import authentication.Home;
 
 /**
  *
  * @author Med Amine Ben Ammar
  */
-public class ClientsCrudSystemUI extends javax.swing.JFrame {
+public class ClientCrudSystemUI extends javax.swing.JFrame {
 
     /**
-     * Creates new form ClientsCrudSystem
+     * Creates new form ClientCrudSystem
      */
-    public ClientsCrudSystemUI() {
+    public ClientCrudSystemUI() {
         initComponents();
         DefaultTableModel model = (DefaultTableModel) clients_data.getModel();
-        for(Clients list:ClientsCrudSystem.getAllClients())
+        for(Client list:ClientCrudSystem.getAllClients())
         {
             Object[] row = { list.getNcin(), list.getFname(), list.getLname(), list.getTel() , list.getAdr() };
             model.addRow(row);
@@ -31,6 +32,12 @@ public class ClientsCrudSystemUI extends javax.swing.JFrame {
         
            
 
+    }
+    
+    
+    public void setAdminInfo(String name)
+    {
+        clt_admin_name.setText(name);
     }
 
     /**
@@ -62,12 +69,33 @@ public class ClientsCrudSystemUI extends javax.swing.JFrame {
         reset = new javax.swing.JButton();
         add1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        u_clt = new javax.swing.JButton();
+        u_adr = new javax.swing.JTextField();
+        u_ncin = new javax.swing.JTextField();
+        u_fname = new javax.swing.JTextField();
+        u_lname = new javax.swing.JTextField();
+        u_tel = new javax.swing.JTextField();
+        find_clt = new javax.swing.JButton();
+        del_clt = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        pic = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        clt_admin_name = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setType(java.awt.Window.Type.UTILITY);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTabbedPane1.setBackground(new java.awt.Color(204, 204, 255));
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jTabbedPane1.setOpaque(true);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -91,11 +119,12 @@ public class ClientsCrudSystemUI extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("View Client Data", jPanel1);
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -169,7 +198,7 @@ public class ClientsCrudSystemUI extends javax.swing.JFrame {
                 resetActionPerformed(evt);
             }
         });
-        jPanel3.add(reset, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 390, 200, 80));
+        jPanel3.add(reset, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, 200, 80));
 
         add1.setBackground(new java.awt.Color(255, 255, 255));
         add1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -179,24 +208,94 @@ public class ClientsCrudSystemUI extends javax.swing.JFrame {
                 add1ActionPerformed(evt);
             }
         });
-        jPanel3.add(add1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 390, 200, 80));
+        jPanel3.add(add1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 200, 80));
 
         jTabbedPane1.addTab("Insert Client", jPanel3);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 745, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 543, Short.MAX_VALUE)
-        );
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel7.setText("Adress");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 80, 40));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel8.setText("Ncin");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 50, 40));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel9.setText("First Name");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 130, 40));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel10.setText("Last Name");
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 130, 40));
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel11.setText("Tel");
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 50, 40));
+
+        u_clt.setBackground(new java.awt.Color(51, 255, 255));
+        u_clt.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        u_clt.setText("Update Client");
+        u_clt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                u_cltActionPerformed(evt);
+            }
+        });
+        jPanel2.add(u_clt, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 360, 200, 60));
+        jPanel2.add(u_adr, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 150, 30));
+        jPanel2.add(u_ncin, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, 150, 30));
+        jPanel2.add(u_fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 150, 30));
+        jPanel2.add(u_lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 150, 30));
+        jPanel2.add(u_tel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 150, 30));
+
+        find_clt.setBackground(new java.awt.Color(51, 255, 255));
+        find_clt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        find_clt.setText("Find");
+        find_clt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                find_cltActionPerformed(evt);
+            }
+        });
+        jPanel2.add(find_clt, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 40, 120, 30));
+
+        del_clt.setBackground(new java.awt.Color(51, 255, 255));
+        del_clt.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        del_clt.setText("Delete CLient");
+        del_clt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                del_cltActionPerformed(evt);
+            }
+        });
+        jPanel2.add(del_clt, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 360, 200, 60));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/advisor.png"))); // NOI18N
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, 280, 300));
 
         jTabbedPane1.addTab("Upadate / Delete Client", jPanel2);
 
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 530));
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 750, 450));
+
+        pic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user_pic.png"))); // NOI18N
+        getContentPane().add(pic, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 80, 70));
+
+        jLabel12.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel12.setText("Admin Name : ");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 110, 60));
+
+        clt_admin_name.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        clt_admin_name.setText("jLabel12");
+        getContentPane().add(clt_admin_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 110, 60));
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
+        jLabel14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 0, 70, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -228,6 +327,7 @@ public class ClientsCrudSystemUI extends javax.swing.JFrame {
         lname.setText("");
         tel.setText("");
         adr.setText("");
+        u_ncin.setEditable(true);
     }//GEN-LAST:event_resetActionPerformed
 
     private void add1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add1ActionPerformed
@@ -241,15 +341,18 @@ public class ClientsCrudSystemUI extends javax.swing.JFrame {
         int ncin = Integer.parseInt(t_ncin);
         int tel = Integer.parseInt(t_tel);
         
-        Clients client = new Clients(ncin,_fname,_lname,tel,_adr);
-        Clients test_existence = new Clients();
-        ClientsCrudSystem.getClient(ncin);
-        if(test_existence.getNcin() != 0)
+        Client client = new Client(ncin,_fname,_lname,tel,_adr);
+        Client test_existence = ClientCrudSystem.getClient(ncin);
+        
+        if(test_existence.getNcin() == 0)
         {
-           int status = ClientsCrudSystem.save(client);
+           int status = ClientCrudSystem.save(client);
             if(status > 0)
             {
                 JOptionPane.showMessageDialog(jPanel3,"Record Added succesfully");
+                this.setVisible(false);
+                ClientCrudSystemUI ui = new ClientCrudSystemUI();
+                ui.setVisible(true);
             }
             else
             {
@@ -265,6 +368,86 @@ public class ClientsCrudSystemUI extends javax.swing.JFrame {
         
             
     }//GEN-LAST:event_add1ActionPerformed
+
+    private void find_cltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_find_cltActionPerformed
+        // TODO add your handling code here:
+        String t_ncin = u_ncin.getText();
+        int ncin = Integer.parseInt(t_ncin);
+        Client test_existence = ClientCrudSystem.getClient(ncin);
+        
+        if(test_existence.getNcin() != 0)
+        {
+            //JOptionPane.showMessageDialog(jPanel3,"Record Added succesfully");
+            u_ncin.setEditable(false);
+            u_fname.setText(test_existence.getFname());
+            u_lname.setText(test_existence.getLname());
+            int tel = test_existence.getTel();
+            String s_tel = Integer.toString(tel);
+            u_tel.setText(s_tel);
+            u_adr.setText(test_existence.getAdr());
+            
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(jPanel3,"Ncin Not Found Error 404!!!","Warning",JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_find_cltActionPerformed
+
+    private void del_cltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_del_cltActionPerformed
+        // TODO add your handling code here:
+        String t_ncin = u_ncin.getText();
+        int ncin = Integer.parseInt(t_ncin);
+        
+        int status = ClientCrudSystem.delete(ncin);
+            if(status > 0)
+            {
+                JOptionPane.showMessageDialog(jPanel3,"Record Deleted succesfully");
+                this.setVisible(false);
+                ClientCrudSystemUI ui = new ClientCrudSystemUI();
+                ui.setVisible(true);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(jPanel3,"Sorry! Error Occured","Warning",JOptionPane.ERROR_MESSAGE);
+            } 
+        
+    }//GEN-LAST:event_del_cltActionPerformed
+
+    private void u_cltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_u_cltActionPerformed
+        // TODO add your handling code here:
+        String t_ncin = u_ncin.getText();
+        String _fname = u_fname.getText();
+        String _lname = u_lname.getText();
+        String t_tel = u_tel.getText();
+        String _adr = u_adr.getText();
+        
+        int ncin = Integer.parseInt(t_ncin);
+        int tel = Integer.parseInt(t_tel);
+        
+        Client client = new Client(ncin,_fname,_lname,tel,_adr);
+        
+        int status = ClientCrudSystem.update(client);
+            if(status > 0)
+            {
+                JOptionPane.showMessageDialog(jPanel3,"Record Updated succesfully");
+                this.setVisible(false);
+                ClientCrudSystemUI ui = new ClientCrudSystemUI();
+                ui.setVisible(true);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(jPanel3,"Sorry! Error Occured","Warning",JOptionPane.ERROR_MESSAGE);
+            } 
+    }//GEN-LAST:event_u_cltActionPerformed
+
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        // TODO add your handling code here:
+        Home home = new Home();
+        home.setHomeUsername(clt_admin_name.getText());
+        this.setVisible(false);
+        home.setVisible(true);
+    }//GEN-LAST:event_jLabel14MouseClicked
 
     /**
      * @param args the command line arguments
@@ -283,21 +466,23 @@ public class ClientsCrudSystemUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ClientsCrudSystemUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClientCrudSystemUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ClientsCrudSystemUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClientCrudSystemUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ClientsCrudSystemUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClientCrudSystemUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ClientsCrudSystemUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClientCrudSystemUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ClientsCrudSystemUI().setVisible(true);
+                new ClientCrudSystemUI().setVisible(true);
             }
         });
     }
@@ -306,13 +491,24 @@ public class ClientsCrudSystemUI extends javax.swing.JFrame {
     private javax.swing.JButton add1;
     private javax.swing.JTextField adr;
     private javax.swing.JTable clients_data;
+    private javax.swing.JLabel clt_admin_name;
+    private javax.swing.JButton del_clt;
+    private javax.swing.JButton find_clt;
     private javax.swing.JTextField fname;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -321,7 +517,14 @@ public class ClientsCrudSystemUI extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField lname;
     private javax.swing.JTextField ncin;
+    private javax.swing.JLabel pic;
     private javax.swing.JButton reset;
     private javax.swing.JTextField tel;
+    private javax.swing.JTextField u_adr;
+    private javax.swing.JButton u_clt;
+    private javax.swing.JTextField u_fname;
+    private javax.swing.JTextField u_lname;
+    private javax.swing.JTextField u_ncin;
+    private javax.swing.JTextField u_tel;
     // End of variables declaration//GEN-END:variables
 }

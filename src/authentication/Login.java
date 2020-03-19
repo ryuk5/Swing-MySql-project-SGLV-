@@ -68,11 +68,18 @@ public class Login extends javax.swing.JFrame {
         db_status = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(600, 400));
+        setMinimumSize(new java.awt.Dimension(600, 400));
+        setPreferredSize(new java.awt.Dimension(600, 400));
+        setResizable(false);
+        setType(java.awt.Window.Type.UTILITY);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel1.setText("Username");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel2.setText("Password");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, 20));
 
@@ -81,24 +88,32 @@ public class Login extends javax.swing.JFrame {
                 usernameActionPerformed(evt);
             }
         });
-        getContentPane().add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 180, 20));
-        getContentPane().add(pwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 180, 20));
+        getContentPane().add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 320, 30));
+        getContentPane().add(pwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 320, 30));
 
-        state.setText("Check");
-        getContentPane().add(state, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 130, 40));
+        state.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        state.setText("State : ");
+        getContentPane().add(state, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 380, 40));
 
+        login.setBackground(new java.awt.Color(204, 204, 255));
+        login.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        login.setForeground(new java.awt.Color(255, 255, 255));
         login.setText("Enter");
         login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginActionPerformed(evt);
             }
         });
-        getContentPane().add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 100, 40));
+        getContentPane().add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 460, 40));
 
+        db_status_text.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         db_status_text.setText("Database Status : ");
-        getContentPane().add(db_status_text, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 110, 50));
+        getContentPane().add(db_status_text, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 130, 50));
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, -1, -1));
-        getContentPane().add(db_status, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 200, 50));
+
+        db_status.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        db_status.setOpaque(true);
+        getContentPane().add(db_status, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 150, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

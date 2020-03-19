@@ -12,8 +12,8 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
-import clients.ClientsCrudSystemUI;
-import cars.CarsCrudSystemUI;
+import clients.ClientCrudSystemUI;
+import cars.CarCrudSystemUI;
 import rent.RentCrudSystemUI;
 
 
@@ -105,8 +105,11 @@ public class Home extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
-        setPreferredSize(new java.awt.Dimension(1000, 600));
-        setSize(new java.awt.Dimension(1000, 600));
+        setMaximumSize(new java.awt.Dimension(800, 600));
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(800, 600));
+        setSize(new java.awt.Dimension(800, 700));
+        setType(java.awt.Window.Type.UTILITY);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -393,22 +396,25 @@ public class Home extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        CarsCrudSystemUI ccs = new CarsCrudSystemUI();
-        ccs.setVisible(true);
+        CarCrudSystemUI cUI = new CarCrudSystemUI();
+        cUI.setAdminInfo(home_username.getText());
+        cUI.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        ClientsCrudSystemUI clcs = new ClientsCrudSystemUI();
-        clcs.setVisible(true);
+        ClientCrudSystemUI cltUI = new ClientCrudSystemUI();
+        cltUI.setAdminInfo(home_username.getText());
+        cltUI.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        RentCrudSystemUI rcs = new RentCrudSystemUI();
-        rcs.setVisible(true);
+        RentCrudSystemUI rUI = new RentCrudSystemUI();
+        //rUI.setAdminInfo(home_username.getText());
+        rUI.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
