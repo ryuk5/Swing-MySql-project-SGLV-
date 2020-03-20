@@ -105,11 +105,8 @@ public class Home extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
-        setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
-        setPreferredSize(new java.awt.Dimension(800, 600));
         setSize(new java.awt.Dimension(800, 700));
-        setType(java.awt.Window.Type.UTILITY);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -459,6 +456,7 @@ public class Home extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Home().setVisible(true);
             }

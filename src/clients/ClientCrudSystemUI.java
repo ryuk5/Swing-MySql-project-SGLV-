@@ -83,13 +83,17 @@ public class ClientCrudSystemUI extends javax.swing.JFrame {
         find_clt = new javax.swing.JButton();
         del_clt = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        v_ncin = new javax.swing.JTextField();
+        v_clt = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
         pic = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         clt_admin_name = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setType(java.awt.Window.Type.UTILITY);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
@@ -275,6 +279,28 @@ public class ClientCrudSystemUI extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Upadate / Delete Client", jPanel2);
 
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel15.setText("Ncin :");
+        jPanel4.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 120, 70));
+        jPanel4.add(v_ncin, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 260, 70));
+
+        v_clt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        v_clt.setText("Client File");
+        v_clt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v_cltActionPerformed(evt);
+            }
+        });
+        jPanel4.add(v_clt, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 200, 70));
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/support.png"))); // NOI18N
+        jPanel4.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, 160, 140));
+
+        jTabbedPane1.addTab("Client File", jPanel4);
+
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 750, 450));
 
         pic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user_pic.png"))); // NOI18N
@@ -352,6 +378,7 @@ public class ClientCrudSystemUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(jPanel3,"Record Added succesfully");
                 this.setVisible(false);
                 ClientCrudSystemUI ui = new ClientCrudSystemUI();
+                ui.setAdminInfo(clt_admin_name.getText());
                 ui.setVisible(true);
             }
             else
@@ -405,6 +432,7 @@ public class ClientCrudSystemUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(jPanel3,"Record Deleted succesfully");
                 this.setVisible(false);
                 ClientCrudSystemUI ui = new ClientCrudSystemUI();
+                ui.setAdminInfo(clt_admin_name.getText());
                 ui.setVisible(true);
             }
             else
@@ -433,6 +461,7 @@ public class ClientCrudSystemUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(jPanel3,"Record Updated succesfully");
                 this.setVisible(false);
                 ClientCrudSystemUI ui = new ClientCrudSystemUI();
+                ui.setAdminInfo(clt_admin_name.getText());
                 ui.setVisible(true);
             }
             else
@@ -448,6 +477,28 @@ public class ClientCrudSystemUI extends javax.swing.JFrame {
         this.setVisible(false);
         home.setVisible(true);
     }//GEN-LAST:event_jLabel14MouseClicked
+
+    private void v_cltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v_cltActionPerformed
+        // TODO add your handling code here:
+        String t_ncin = v_ncin.getText();
+        
+        int ncin = Integer.parseInt(t_ncin);
+        
+        Client clt = ClientCrudSystem.getClient(ncin);
+        if(clt.getNcin() == 0)
+        {
+            //error handling
+            JOptionPane.showMessageDialog(jPanel3,"Sorry! Client Not Found Error 404","Warning",JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+            ClientFileUI cltFUI = new ClientFileUI(clt);
+            cltFUI.setAdminInfo(this.clt_admin_name.getText());
+            this.setVisible(false);
+            cltFUI.setVisible(true);
+            
+        }
+    }//GEN-LAST:event_v_cltActionPerformed
 
     /**
      * @param args the command line arguments
@@ -481,6 +532,7 @@ public class ClientCrudSystemUI extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new ClientCrudSystemUI().setVisible(true);
             }
@@ -501,6 +553,8 @@ public class ClientCrudSystemUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -512,6 +566,7 @@ public class ClientCrudSystemUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -526,5 +581,9 @@ public class ClientCrudSystemUI extends javax.swing.JFrame {
     private javax.swing.JTextField u_lname;
     private javax.swing.JTextField u_ncin;
     private javax.swing.JTextField u_tel;
+    private javax.swing.JButton v_clt;
+    private javax.swing.JTextField v_ncin;
     // End of variables declaration//GEN-END:variables
+
+    
 }

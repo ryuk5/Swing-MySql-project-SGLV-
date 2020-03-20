@@ -72,7 +72,6 @@ public class Login extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(600, 400));
         setPreferredSize(new java.awt.Dimension(600, 400));
         setResizable(false);
-        setType(java.awt.Window.Type.UTILITY);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -201,6 +200,7 @@ public class Login extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 try {
                     new Login().setVisible(true);

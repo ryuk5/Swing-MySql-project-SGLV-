@@ -176,5 +176,90 @@ public class RentCrudSystem {
         
         return list;
     }
+    
+    
+    public static List<Rent> getAllRentsByDate(String date)
+    {
+        List<Rent> list = new ArrayList<Rent>();
+        try
+        {
+            String req = "SELECT * FROM rent WHERE date=?";
+            Connection con = RentCrudSystem.getConnection();
+            PreparedStatement preparedStatement = (PreparedStatement)con.prepareCall(req);
+            preparedStatement.setString(1, date);
+            
+            ResultSet resultSet = preparedStatement.executeQuery();
+            
+            while(resultSet.next())
+            {
+                list.add(new Rent(resultSet.getInt(1),resultSet.getInt(2),resultSet.getString(3),resultSet.getInt(4),resultSet.getInt(5)));
+                
+            }
+            con.close();
+        }
+        catch(SQLException e)
+        {
+            e.printStackTrace();
+        }
+        
+        return list;
+    }
+    
+    
+    public static List<Rent> getAllRentsByNcin(int ncin)
+    {
+        List<Rent> list = new ArrayList<Rent>();
+        try
+        {
+            String req = "SELECT * FROM rent WHERE ncin=?";
+            Connection con = RentCrudSystem.getConnection();
+            PreparedStatement preparedStatement = (PreparedStatement)con.prepareCall(req);
+            preparedStatement.setInt(1, ncin);
+            
+            ResultSet resultSet = preparedStatement.executeQuery();
+            
+            while(resultSet.next())
+            {
+                list.add(new Rent(resultSet.getInt(1),resultSet.getInt(2),resultSet.getString(3),resultSet.getInt(4),resultSet.getInt(5)));
+                
+            }
+            con.close();
+        }
+        catch(SQLException e)
+        {
+            e.printStackTrace();
+        }
+        
+        return list;
+    }
+    
+    
+    public static List<Rent> getAllRentsByID(int id)
+    {
+        List<Rent> list = new ArrayList<Rent>();
+        try
+        {
+            String req = "SELECT * FROM rent WHERE id=?";
+            Connection con = RentCrudSystem.getConnection();
+            PreparedStatement preparedStatement = (PreparedStatement)con.prepareCall(req);
+            preparedStatement.setInt(1, id);
+            
+            ResultSet resultSet = preparedStatement.executeQuery();
+            
+            while(resultSet.next())
+            {
+                list.add(new Rent(resultSet.getInt(1),resultSet.getInt(2),resultSet.getString(3),resultSet.getInt(4),resultSet.getInt(5)));
+                
+            }
+            con.close();
+        }
+        catch(SQLException e)
+        {
+            e.printStackTrace();
+        }
+        
+        return list;
+    }
+
 
 }

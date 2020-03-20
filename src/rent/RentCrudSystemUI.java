@@ -10,7 +10,6 @@ import cars.Car;
 import cars.CarCrudSystem;
 import clients.Client;
 import clients.ClientCrudSystem;
-import clients.ClientCrudSystemUI;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -36,7 +35,7 @@ public class RentCrudSystemUI extends javax.swing.JFrame {
     
     public void setAdminInfo(String name)
     {
-        r_admin_name.setText(name);
+        c_admin_name.setText(name);
     }
 
     /**
@@ -67,6 +66,12 @@ public class RentCrudSystemUI extends javax.swing.JFrame {
         r_res = new javax.swing.JButton();
         r_add = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        v_date = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -81,10 +86,11 @@ public class RentCrudSystemUI extends javax.swing.JFrame {
         r_delete = new javax.swing.JButton();
         u_r_find = new javax.swing.JButton();
         r_update = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         pic = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        r_admin_name = new javax.swing.JLabel();
+        c_admin_name = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -197,6 +203,32 @@ public class RentCrudSystemUI extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Add Rent", jPanel2);
 
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel13.setText("Check by Date :");
+        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 210, 100));
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel16.setText("Rental Form");
+        jPanel4.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 130, 100));
+        jPanel4.add(v_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 280, 70));
+
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/plus.png"))); // NOI18N
+        jLabel18.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel18MouseClicked(evt);
+            }
+        });
+        jPanel4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, 90, 70));
+
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/customer-support.png"))); // NOI18N
+        jPanel4.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, 160, 140));
+
+        jTabbedPane1.addTab("Rental Form", jPanel4);
+
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -252,6 +284,9 @@ public class RentCrudSystemUI extends javax.swing.JFrame {
         });
         jPanel3.add(r_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, 140, 50));
 
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/telegram.png"))); // NOI18N
+        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, 180, 150));
+
         jTabbedPane1.addTab("Update / Delete", jPanel3);
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 690, 350));
@@ -272,9 +307,9 @@ public class RentCrudSystemUI extends javax.swing.JFrame {
         jLabel12.setText("Admin Name : ");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 110, 60));
 
-        r_admin_name.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        r_admin_name.setText("jLabel12");
-        getContentPane().add(r_admin_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 110, 60));
+        c_admin_name.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        c_admin_name.setText("jLabel12");
+        getContentPane().add(c_admin_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 110, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -282,7 +317,7 @@ public class RentCrudSystemUI extends javax.swing.JFrame {
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
         // TODO add your handling code here:
         Home home = new Home();
-        home.setHomeUsername(r_admin_name.getText());
+        home.setHomeUsername(c_admin_name.getText());
         this.setVisible(false);
         home.setVisible(true);
     }//GEN-LAST:event_jLabel14MouseClicked
@@ -290,7 +325,7 @@ public class RentCrudSystemUI extends javax.swing.JFrame {
     private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
         // TODO add your handling code here:
         Home home = new Home();
-        home.setHomeUsername(r_admin_name.getText());
+        home.setHomeUsername(c_admin_name.getText());
         this.setVisible(false);
         home.setVisible(true);
     }//GEN-LAST:event_jLabel15MouseClicked
@@ -347,6 +382,7 @@ public class RentCrudSystemUI extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(jPanel3,"Rent Added succesfully");
                         this.setVisible(false);
                         RentCrudSystemUI ui = new RentCrudSystemUI();
+                        ui.setAdminInfo(c_admin_name.getText());
                         ui.setVisible(true);   
 
                     }
@@ -431,6 +467,7 @@ public class RentCrudSystemUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(jPanel3,"Record Deleted succesfully");
                 this.setVisible(false);
                 RentCrudSystemUI ui = new RentCrudSystemUI();
+                ui.setAdminInfo(c_admin_name.getText());
                 ui.setVisible(true);
             }
             else
@@ -461,6 +498,7 @@ public class RentCrudSystemUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(jPanel3,"Rent Updated succesfully");
                 this.setVisible(false);
                 RentCrudSystemUI ui = new RentCrudSystemUI();
+                ui.setAdminInfo(c_admin_name.getText());
                 ui.setVisible(true);
             }
             else
@@ -468,6 +506,16 @@ public class RentCrudSystemUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(jPanel3,"Sorry! Error Occured","Warning",JOptionPane.ERROR_MESSAGE);
             } 
     }//GEN-LAST:event_r_updateActionPerformed
+
+    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
+        // TODO add your handling code here:
+        String date = this.v_date.getText();
+        RentalFileUI v_rentUI = new RentalFileUI(date);
+        v_rentUI.setAdmin(c_admin_name.getText());
+        this.setVisible(false);
+        v_rentUI.setVisible(true);
+       
+    }//GEN-LAST:event_jLabel18MouseClicked
 
     /**
      * @param args the command line arguments
@@ -499,6 +547,7 @@ public class RentCrudSystemUI extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new RentCrudSystemUI().setVisible(true);
             }
@@ -506,12 +555,18 @@ public class RentCrudSystemUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel c_admin_name;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -523,11 +578,11 @@ public class RentCrudSystemUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel pic;
     private javax.swing.JButton r_add;
-    private javax.swing.JLabel r_admin_name;
     private javax.swing.JTextField r_date;
     private javax.swing.JButton r_delete;
     private javax.swing.JTextField r_id;
@@ -543,5 +598,6 @@ public class RentCrudSystemUI extends javax.swing.JFrame {
     private javax.swing.JTextField u_r_nbd;
     private javax.swing.JTextField u_r_ncin;
     private javax.swing.JTextField u_r_pd;
+    private javax.swing.JTextField v_date;
     // End of variables declaration//GEN-END:variables
 }

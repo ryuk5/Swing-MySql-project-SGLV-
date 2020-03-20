@@ -66,6 +66,11 @@ public class CarCrudSystemUI extends javax.swing.JFrame {
         del_car = new javax.swing.JButton();
         find = new javax.swing.JButton();
         u_car = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        c_id = new javax.swing.JTextField();
+        v_car = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
         pic = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         c_admin_name = new javax.swing.JLabel();
@@ -203,6 +208,28 @@ public class CarCrudSystemUI extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Update / Delete", jPanel3);
 
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel6.setText("ID :");
+        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 110, 50));
+        jPanel4.add(c_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 170, 50));
+
+        v_car.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        v_car.setText("Car File");
+        v_car.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v_carActionPerformed(evt);
+            }
+        });
+        jPanel4.add(v_car, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, 180, 60));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/car_diag.png"))); // NOI18N
+        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, 150, 130));
+
+        jTabbedPane1.addTab("Car File", jPanel4);
+
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 690, 390));
 
         pic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user_pic.png"))); // NOI18N
@@ -254,6 +281,7 @@ public class CarCrudSystemUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(jPanel3,"Record Added succesfully");
                 this.setVisible(false);
                 CarCrudSystemUI ui = new CarCrudSystemUI();
+                ui.setAdminInfo(c_admin_name.getText());
                 ui.setVisible(true);
             }
             else
@@ -285,6 +313,7 @@ public class CarCrudSystemUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(jPanel3,"Car Deleted succesfully");
                 this.setVisible(false);
                 CarCrudSystemUI ui = new CarCrudSystemUI();
+                ui.setAdminInfo(c_admin_name.getText());
                 ui.setVisible(true);
             }
             else
@@ -328,6 +357,7 @@ public class CarCrudSystemUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(jPanel3,"Car Updated succesfully");
                 this.setVisible(false);
                 CarCrudSystemUI ui = new CarCrudSystemUI();
+                ui.setAdminInfo(c_admin_name.getText());
                 ui.setVisible(true);
             }
             else
@@ -343,6 +373,26 @@ public class CarCrudSystemUI extends javax.swing.JFrame {
         this.setVisible(false);
         home.setVisible(true);
     }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void v_carActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v_carActionPerformed
+        // TODO add your handling code here:
+        String t_id = c_id.getText();
+        int id = Integer.parseInt(t_id);
+        
+        Car car = CarCrudSystem.getCar(id);
+        if(car.getId() == 0)
+        {
+            //error handling
+            JOptionPane.showMessageDialog(jPanel3,"Sorry! Car Not Found Error 404","Warning",JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+            CarFileUI cFUI = new CarFileUI(car);
+            cFUI.setAdminInfo(this.c_admin_name.getText());
+            cFUI.setVisible(true);
+            this.setVisible(false);
+        }
+    }//GEN-LAST:event_v_carActionPerformed
 
     /**
      * @param args the command line arguments
@@ -381,10 +431,11 @@ public class CarCrudSystemUI extends javax.swing.JFrame {
             }
         });
     }
-
+  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add_car;
     private javax.swing.JLabel c_admin_name;
+    private javax.swing.JTextField c_id;
     private javax.swing.JTable cars_data;
     private javax.swing.JButton del_car;
     private javax.swing.JButton find;
@@ -395,9 +446,12 @@ public class CarCrudSystemUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField mark;
@@ -407,5 +461,6 @@ public class CarCrudSystemUI extends javax.swing.JFrame {
     private javax.swing.JTextField u_id;
     private javax.swing.JTextField u_mar;
     private javax.swing.JButton u_res;
+    private javax.swing.JButton v_car;
     // End of variables declaration//GEN-END:variables
 }
